@@ -1,0 +1,39 @@
+<section class="wrapper site-min-height" xmlns:th="http://www.w3.org/1999/xhtml">
+    <h3><i class="fa fa-angle-right"></i>班级管理</h3>
+    <div class="row mt">
+        <div class="col-lg-12">
+            <div class="form-panel">
+                <h4 class="mb"><i class="fa fa-angle-right" th:text="${class_info.class_id}">{班级}</i></h4>
+                <form class="form-horizontal style-form">
+                    <!--班级-->
+                    <div class="form-group">
+                        <label class="col-lg-2 col-sm-2 control-label">班级名称</label>
+                        <div class="col-lg-10">
+                            <input id="class_name" type="text" class="form-control" th:value="${class_info.class_name}">
+                        </div>
+                    </div>
+                    <!--老师-->
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label">老师</label>
+                        <div class="col-sm-10">
+                           <select class="form-control" id="teacher_id">
+                               <option th:each="teachers:${teachers}" th:value="${teachers.teacher_id}"
+                                                th:text="${teachers.name}"
+                                                th:selected="${teachers.teacher_id == class_info.teacher_id_fk.teacher_id}">
+
+                           </option>
+                           </select>
+                        </div>
+                    </div>
+                    <!--提交-->
+                    <div class="form-group">
+                        <label class="col-sm-2 col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <button type="button" class="btn btn-primary" onclick="editClass(this)" th:id="${class_info.class_id}">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><!-- col-lg-12-->
+    </div><!-- /row -->
+</section>
